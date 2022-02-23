@@ -1,7 +1,6 @@
 version: "3"
 services:
   proxy:
-    container_name: nginx
     restart: on-failure
     image: nginx
     volumes:
@@ -12,9 +11,10 @@ services:
     ports:
       - 80:80
     depends_on:
-      - app
+      - client-frontend
+      - server-frontend
+      - server-backend
   client-frontend:
-    container_name: client-frontend
     build: ./client-frontend
     restart: always
     volumes:
@@ -24,7 +24,6 @@ services:
     depends_on:
       - server-backend
   server-frontend:
-    container_name: server-frontend
     build: ./server-frontend
     restart: always
     volumes:
@@ -34,7 +33,6 @@ services:
     depends_on:
       - server-backend
   server-backend:
-    container_name: server-backend
     build: ./server-backend
     restart: always
     environment:
@@ -49,7 +47,6 @@ services:
     depends_on:
       - db
   db:
-    container_name: postgres
     image: postgres
     volumes:
       - db-volume:/var/lib/postgresql/data
