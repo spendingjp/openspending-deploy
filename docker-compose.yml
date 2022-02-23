@@ -13,6 +13,16 @@ services:
       - 80:80
     depends_on:
       - app
+  client-frontend:
+    container_name: client-frontend
+    build: ./client-frontend
+    restart: always
+    volumes:
+      - static_volume:/static
+    networks:
+      - backend
+    depends_on:
+      - server-backend
   server-frontend:
     container_name: server-frontend
     build: ./server-frontend
