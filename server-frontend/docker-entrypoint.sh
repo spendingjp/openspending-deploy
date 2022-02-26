@@ -4,7 +4,7 @@ set -e
 cd /openspending-backend
 git pull origin develop
 
-cd frontend
+cd /server-frontend
 yarn install
 yarn generate --fail-on-error
 
