@@ -5,7 +5,7 @@ cd /openspending-frontend
 git pull origin develop
 
 yarn install
-yarn generate
+yarn generate --fail-on-error
 
 rm -rf /static/client-frontend
 mkdir -p /static/client-frontend

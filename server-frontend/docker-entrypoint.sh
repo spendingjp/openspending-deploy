@@ -6,7 +6,7 @@ git pull origin develop
 
 cd frontend
 yarn install
-yarn generate
+yarn generate --fail-on-error
 
 rm -rf /static/server-frontend
 mkdir -p /static/server-frontend
