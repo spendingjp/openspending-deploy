@@ -1,7 +1,8 @@
-#!/bin/bash
-set -eu
+#!/bin/sh
+set -e
 
-cd /openspending-backend && git pull origin develop
+cd /openspending-backend
+git pull origin develop
 
 cd /server-backend
 python manage.py makemigrations
