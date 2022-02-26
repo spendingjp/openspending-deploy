@@ -20,6 +20,8 @@ services:
       - server-backend
   server-frontend:
     build: ./server-frontend
+    environment:
+      - API_URL=${APPLICATION_API_URL}
     volumes:
       - static_volume:/static
     depends_on:
@@ -32,6 +34,7 @@ services:
       - APPLICATION_DATABASE_HOST=db
       - APPLICATION_ALLOWED_HOSTS=${APPLICATION_ALLOWED_HOSTS}
       - APPLICATION_SECRET_KEY=${APPLICATION_SECRET_KEY}
+      - APPLICATION_CORS_ALLOWED_ORIGINS=${APPLICATION_CORS_ALLOWED_ORIGINS}
     volumes:
       - static_volume:/static
     depends_on:
