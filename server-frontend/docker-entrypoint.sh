@@ -1,8 +1,9 @@
-#!/bin/bash
-set -eu
+#!/bin/sh
+set -e
 
-cd /openspending-backend && git pull origin develop
+cd /openspending-backend
+git pull origin develop
 
-cd /openspending-backend/frontend
+cd /server-frontend
 yarn install
 yarn dev
