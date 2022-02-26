@@ -10,6 +10,7 @@ services:
       - 80:80
     depends_on:
       - client-frontend
+      - server-site
       - server-frontend
       - server-backend
   client-frontend:
