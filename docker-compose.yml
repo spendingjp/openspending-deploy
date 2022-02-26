@@ -22,6 +22,8 @@ services:
   server-frontend:
     build: ./server-frontend
     restart: always
+    environment:
+      - API_URL=${APPLICATION_API_URL}
     volumes:
       - static_volume:/static
     depends_on:
