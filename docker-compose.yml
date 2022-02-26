@@ -14,6 +14,8 @@ services:
       - server-backend
   client-frontend:
     build: ./client-frontend
+    environment:
+      - API_URL=${APPLICATION_API_URL}
     volumes:
       - static_volume:/static
     depends_on:
