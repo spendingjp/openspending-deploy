@@ -21,6 +21,13 @@ services:
       - static_volume:/static
     depends_on:
       - server-backend
+  server-site:
+    build: ./server-site
+    restart: always
+    volumes:
+      - static_volume:/static
+    depends_on:
+      - server-backend
   server-frontend:
     build: ./server-frontend
     restart: always
