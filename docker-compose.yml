@@ -25,6 +25,10 @@ services:
   server-site:
     build: ./server-site
     restart: always
+    environment:
+      - API_URL=${APPLICATION_API_URL}
+      - SITE_URL_DOMAIN=${LP_SITE_URL_DOMAIN}
+      - SITE_URL_PROTOCOL=${LP_SITE_URL_PROTOCOL}
     volumes:
       - static_volume:/static
     depends_on:
