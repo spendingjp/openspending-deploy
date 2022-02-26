@@ -14,14 +14,12 @@ services:
       - server-backend
   client-frontend:
     build: ./client-frontend
-    restart: always
     volumes:
       - static_volume:/static
     depends_on:
       - server-backend
   server-frontend:
     build: ./server-frontend
-    restart: always
     volumes:
       - static_volume:/static
     depends_on:
