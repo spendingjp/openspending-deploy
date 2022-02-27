@@ -9,43 +9,20 @@ services:
     ports:
       - 80:80
     depends_on:
-      - client-frontend
-      - server-site
-      - server-frontend
-      - server-backend
-  client-frontend:
-    build: ./client-frontend
-    restart: always
-    environment:
-      - API_URL=${APPLICATION_API_URL}
-    volumes:
-      - static_volume:/static
-    depends_on:
-      - server-backend
-  server-site:
-    build: ./server-site
+      - app
+  app:
+    env_file: ./.env
+    build:
+      context: ./app
+      args:
+        - API_URL=${APPLICATION_API_URL}
+        - SITE_URL_DOMAIN=${LP_SITE_URL_DOMAIN}
+        - SITE_URL_PROTOCOL=${LP_SITE_URL_PROTOCOL}
     restart: always
     environment:
       - API_URL=${APPLICATION_API_URL}
       - SITE_URL_DOMAIN=${LP_SITE_URL_DOMAIN}
       - SITE_URL_PROTOCOL=${LP_SITE_URL_PROTOCOL}
-    volumes:
-      - static_volume:/static
-    depends_on:
-      - server-backend
-  server-frontend:
-    build: ./server-frontend
-    restart: always
-    environment:
-      - API_URL=${APPLICATION_API_URL}
-    volumes:
-      - static_volume:/static
-    depends_on:
-      - server-backend
-  server-backend:
-    build: ./server-backend
-    restart: always
-    environment:
       - APPLICATION_DATABASE_PASSWORD=${APPLICATION_DATABASE_PASSWORD}
       - APPLICATION_DATABASE_HOST=db
       - APPLICATION_ALLOWED_HOSTS=${APPLICATION_ALLOWED_HOSTS}
